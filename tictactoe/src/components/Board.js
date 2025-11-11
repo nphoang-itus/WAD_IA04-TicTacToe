@@ -14,7 +14,8 @@ function Board({ xIsNext, squares, onPlay, winningLine }) {
     onPlay(nextSquares);
   }
 
-  const winner = calculateWinner(squares);
+  // When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw)
+  const winner = calculatesWinner(squares);
   let status;
   let statusClass = '';
   if (winner) {
@@ -29,6 +30,7 @@ function Board({ xIsNext, squares, onPlay, winningLine }) {
     statusClass = '';
   }
 
+  // Req 2. Rewrite the Board to use two loops to make the squares instead of hardcoding them
   const boardRows = [];
   for (let row = 0; row < 3; ++row) {
     const squaresInRow = [];

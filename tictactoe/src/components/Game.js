@@ -4,6 +4,7 @@ import { calculateWinner, getWinningLine } from '../utils/gameLogic';
 import '../styles/Game.css';
 
 function Game() {
+  // Req 5. Display the location for each move in the format (row, col) in the move history list
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const [isAscending, setIsAscending] = useState(true);
@@ -21,8 +22,8 @@ function Game() {
     setCurrentMove(nextMove);
   }
 
-  const winnerInfo = calculateWinner(currentSquares);
-  const winningLine = winnerInfo ? getWinningLine(currentSquares) : null;
+  // Req 4. When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw)
+  const winningLine = calculateWinner(currentSquares) ? getWinningLine(currentSquares) : null;
 
   const moves = history.map((squares, move) => {
     let description;
@@ -30,7 +31,8 @@ function Game() {
     if (move > 0) {
       const row = Math.floor((move - 1) / 3) + 1;
       const col = ((move - 1) % 3) + 1;
-      description = `Go to move #${move} (${row}, ${col})`;
+      // Req 1. For the current move only, show “You are at move #…” instead of a button
+      description = `You are at move #${move} (${row}, ${col})`;
     } else {
       description = 'Go to game start';
     }
@@ -65,6 +67,7 @@ function Game() {
           />
         </div>
         <div className="game-info">
+          {/* Req 3. Add a toggle button that lets you sort the moves in either ascending or descending order */}
           <button
             className="sort-button"
             onClick={() => setIsAscending(!isAscending)}
