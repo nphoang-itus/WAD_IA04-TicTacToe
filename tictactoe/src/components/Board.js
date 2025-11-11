@@ -15,7 +15,7 @@ function Board({ xIsNext, squares, onPlay, winningLine }) {
   }
 
   // When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw)
-  const winner = calculatesWinner(squares);
+  const winner = calculateWinner(squares);
   let status;
   let statusClass = '';
   if (winner) {
