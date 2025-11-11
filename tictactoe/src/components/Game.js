@@ -53,25 +53,28 @@ function Game() {
   const sortedMoves = isAscending ? moves : moves.slice().reverse();
 
   return (
-    <div className="game">
-      <div className="game-board">
-        <Board
-          xIsNext={xIsNext}
-          squares={currentSquares}
-          onPlay={handlePlay}
-          winningLine={winningLine}
-        />
+    <>
+      <div className="game-title">Tic Tac Toe</div>
+      <div className="game">
+        <div className="game-board">
+          <Board
+            xIsNext={xIsNext}
+            squares={currentSquares}
+            onPlay={handlePlay}
+            winningLine={winningLine}
+          />
+        </div>
+        <div className="game-info">
+          <button
+            className="sort-button"
+            onClick={() => setIsAscending(!isAscending)}
+          >
+            {isAscending ? 'Sort Descending' : 'Sort Ascending'}
+          </button>
+          <ol>{sortedMoves}</ol>
+        </div>
       </div>
-      <div className="game-info">
-        <button
-          className="sort-button"
-          onClick={() => setIsAscending(!isAscending)}
-        >
-          {isAscending ? 'Sort Descending' : 'Sort Ascending'}
-        </button>
-        <ol>{sortedMoves}</ol>
-      </div>
-    </div>
+    </>
   );
 }
 

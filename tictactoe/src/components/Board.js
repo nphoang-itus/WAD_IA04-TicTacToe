@@ -16,13 +16,17 @@ function Board({ xIsNext, squares, onPlay, winningLine }) {
 
   const winner = calculateWinner(squares);
   let status;
+  let statusClass = '';
   if (winner) {
     status = 'Winner: ' + winner;
+    statusClass = 'status-win';
   } else if (squares.every(square => square !== null)) {
     status = 'Draw!';
+    statusClass = 'status-draw';
   }
   else {
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    statusClass = '';
   }
 
   const boardRows = [];
@@ -49,7 +53,7 @@ function Board({ xIsNext, squares, onPlay, winningLine }) {
 
   return (
     <>
-      <div className='status'>{status}</div>
+      <div className={`status ${statusClass}`}>{status}</div>
       {boardRows}
     </>
   )
