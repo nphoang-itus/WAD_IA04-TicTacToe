@@ -32,7 +32,7 @@ function Game() {
       const row = Math.floor((move - 1) / 3) + 1;
       const col = ((move - 1) % 3) + 1;
       // Req 1. For the current move only, show “You are at move #…” instead of a button
-      description = `You are at move #${move} (${row}, ${col})`;
+      description = `Go to move #${move} (${row}, ${col})`;
     } else {
       description = 'Go to game start';
     }
